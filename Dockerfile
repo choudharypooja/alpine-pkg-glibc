@@ -5,7 +5,7 @@ ENV REPODEST /packages
 RUN mkdir alpine-glibc
 COPY ./glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz ./glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz
 WORKDIR alpine-glibc
-RUN mv /glibc-bin-${bamboo.GLIBC_VERSION}-0-x86_64.tar.gz .
+RUN mv /glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz .
 COPY ${directory}/alpine-glibc/src/logicmonitor/cmd/container/APKBUILD .
 COPY ${directory}/alpine-glibc/src/logicmonitor/cmd/container/glibc.trigger .
 COPY ${directory}/alpine-glibc/src/logicmonitor/cmd/container/ld.so.conf .
