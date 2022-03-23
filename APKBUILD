@@ -1,6 +1,6 @@
 pkgname="glibc"
 pkgver="2.35"
-_pkgrel="1"
+_pkgrel="0"
 pkgrel="0"
 pkgdesc="GNU C Library compatibility layer"
 arch="x86_64"
