@@ -2,6 +2,8 @@ FROM alpine:3.15.1
 ENV RSA_PRIVATE_KEY_NAME ssh.rsa
 ENV PACKAGER_PRIVKEY /home/builder/${RSA_PRIVATE_KEY_NAME}
 ENV REPODEST /packages
+ARG glibc_version
+ARG directory
 RUN mkdir alpine-glibc
 RUN echo $(pwd)
 COPY ./glibc-bin-${glibc_version}-0-x86_64.tar.gz ./glibc-bin-${glibc_version}-0-x86_64.tar.gz
