@@ -1,0 +1,13 @@
+#!/usr/bin/env ash
+
+set -e
+
+main() {
+  mkdir -p "$REPODEST" /home/builder/.abuild
+  sudo chown -R builder:abuild /home/builder/package
+  sudo chown -R builder:abuild $REPODEST
+
+  exec abuild -v "$@"
+}
+
+main "$@"
