@@ -3,18 +3,18 @@ ENV RSA_PRIVATE_KEY_NAME ssh.rsa
 ENV PACKAGER_PRIVKEY /home/builder/${RSA_PRIVATE_KEY_NAME}
 ENV REPODEST /packages
 RUN mkdir alpine-glibc
-COPY ./glibc-bin-${bamboo.GLIBC_VERSION}-0-x86_64.tar.gz ./glibc-bin-${bamboo.GLIBC_VERSION}-0-x86_64.tar.gz
+COPY ./glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz ./glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz
 WORKDIR alpine-glibc
-RUN mv /glibc-bin-${bamboo.GLIBC_VERSION}-0-x86_64.tar.gz .
-COPY ${bamboo.working.directory}/alpine-glibc/APKBUILD .
-COPY ${bamboo.working.directory}/alpine-glibc/glibc.trigger .
-COPY ${bamboo.working.directory}/alpine-glibc/ld.so.conf .
-COPY ${bamboo.working.directory}/alpine-glibc/nsswitch.conf .
+RUN mv /glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz .
+COPY ${directory}/alpine-glibc/APKBUILD .
+COPY ${directory}/alpine-glibc/glibc.trigger .
+COPY ${directory}/alpine-glibc/ld.so.conf .
+COPY ${directory}/alpine-glibc/nsswitch.conf .
 RUN apk --no-cache add alpine-sdk coreutils cmake abuild sudo && adduser -G abuild -g "Alpine Package Builder" -s /bin/ash -D builder \
   && echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
   && mkdir /packages \
   && chown builder:abuild /packages
-COPY ${bamboo.working.directory}/alpine-glibc/abuilder .
+COPY ${directory}/alpine-glibc/abuilder .
 RUN chown -R builder /alpine-glibc
 RUN mkdir /home/builder/package
 RUN chown -R builder /home/builder
