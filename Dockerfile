@@ -3,9 +3,9 @@ ENV RSA_PRIVATE_KEY_NAME ssh.rsa
 ENV PACKAGER_PRIVKEY /home/builder/${RSA_PRIVATE_KEY_NAME}
 ENV REPODEST /packages
 RUN mkdir alpine-glibc
-COPY ./glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz ./glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz
+COPY ./glibc-bin-${glibc_version}-0-x86_64.tar.gz ./glibc-bin-${glibc_version}-0-x86_64.tar.gz
 WORKDIR alpine-glibc
-RUN mv /glibc-bin-${GLIBC_VERSION}-0-x86_64.tar.gz .
+RUN mv /glibc-bin-${glibc_version}-0-x86_64.tar.gz .
 COPY ${directory}/alpine-glibc/APKBUILD .
 COPY ${directory}/alpine-glibc/glibc.trigger .
 COPY ${directory}/alpine-glibc/ld.so.conf .
