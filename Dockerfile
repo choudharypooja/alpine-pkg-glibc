@@ -1,4 +1,4 @@
-FROM alpine:3.15.1
+FROM alpine:3.15.0
 ENV RSA_PRIVATE_KEY_NAME ssh.rsa
 ENV PACKAGER_PRIVKEY /home/builder/${RSA_PRIVATE_KEY_NAME}
 ENV REPODEST /packages
